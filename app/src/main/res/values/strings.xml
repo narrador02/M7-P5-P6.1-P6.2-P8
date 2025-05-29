@@ -1,0 +1,61 @@
+<resources>
+    <!-- General -->
+    <string name="app_name">NutriTrack</string>
+    <string name="save">Guardar</string>
+    <string name="dark_mode">Modo oscuro</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="units">Unidades de Medida</string>
+    <string name="save_preferences">Guardar Preferencias</string>
+    <string name="summary_placeholder">Resumen de tus datos:</string>
+
+    <!-- Login -->
+    <string name="login">Iniciar sesión</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="txt_register">Registrarse</string>
+    <string name="txt_forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
+
+    <!-- Register -->
+    <string name="hint_username">Nombre de usuario</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="btn_register">Registrarse</string>
+
+    <!-- Recover Password -->
+    <string name="btn_recover_password">Recuperar contraseña</string>
+
+    <!-- Main Menu -->
+    <string name="main_menu">Menú principal</string>
+    <string name="register">Registrarse</string>
+    <string name="recover_password">Recuperar contraseña</string>
+    <string name="preferences">Preferencias</string>
+    <string name="dates">Fechas de Consumo</string>
+    <string name="tracking">Seguimiento</string>
+    <string name="add_food">Añadir alimento</string>
+
+    <!-- Add Food -->
+    <string name="food_name">Nombre del alimento</string>
+    <string name="quantity">Cantidad</string>
+    <string name="unit">Unidad</string>
+    <string name="category">Categoría</string>
+    <string name="unit_selection">Seleccionar unidad de medida</string>
+    <string name="category_selection">Seleccionar categoría</string>
+
+    <!-- Consumption Dates -->
+    <string name="consumption_dates_title">Fechas de Consumo</string>
+    <string name="select_date">Seleccionar fecha</string>
+    <string name="pick_date">Elegir fecha</string>
+    <string name="food_list_title">Lista de alimentos consumidos</string>
+
+    <!-- Tracking -->
+    <string name="tracking_title">Seguimiento</string>
+    <string name="progress_chart">Gráfico de Progreso</string>
+    <string name="update_data">Actualizar Datos</string>
+
+    <!-- Preferences -->
+    <string name="preferences_title">Preferencias</string>
+    <string name="go_to_main">Ir al Menú Principal</string>
+
+    <string name="expiration_date">Fecha de caducidad</string>
+</resources>

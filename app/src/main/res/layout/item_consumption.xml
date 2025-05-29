@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:orientation="horizontal"
+    android:background="@color/md_theme_surface">
+
+    <TextView
+        android:id="@+id/food_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Nombre del alimento"
+        android:textSize="18sp"
+        android:textColor="@color/md_theme_onSurface"
+        android:padding="8dp"/>
+
+    <TextView
+        android:id="@+id/food_calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calorías"
+        android:textSize="16sp"
+        android:textColor="@color/md_theme_onSurface"
+        android:padding="8dp"/>
+
+    <TextView
+        android:id="@+id/food_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha"
+        android:textSize="16sp"
+        android:textColor="@color/md_theme_onSurface"
+        android:padding="8dp"/>
+</LinearLayout>
