@@ -3,17 +3,21 @@ package com.example.m07_p5
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.m07_p5.adapter.AlimentoAdapter
+import com.example.m07_p5.viewmodel.AlimentoViewModel
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : BaseActivity() {
 
+    private val viewModel: AlimentoViewModel by viewModels()
+    private lateinit var adapter: AlimentoAdapter
     private lateinit var txtCalories: TextView
     private lateinit var txtMacros: TextView
-    private lateinit var listFoodHistory: ListView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
 
@@ -21,15 +25,9 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupBottomNavigation(R.id.bottom_navigation, R.id.nav_home)
-
-        txtCalories = findViewById(R.id.txt_calories)
-        txtMacros = findViewById(R.id.txt_macros)
-        listFoodHistory = findViewById(R.id.list_food_history)
+        // Configuración del menú lateral
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.navigation_view)
-
-        // Habilitar el botón del menú lateral
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, findViewById(R.id.toolbar),
             R.string.navigation_drawer_open, R.string.navigation_drawer_close
@@ -37,7 +35,6 @@ class MainActivity : BaseActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        // Manejo del menú lateral
         navView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> navegarSiNoEstaEn(MainActivity::class.java)
@@ -57,7 +54,29 @@ class MainActivity : BaseActivity() {
             true
         }
 
+        adapter = AlimentoAdapter(viewModel.alimentos) { position ->
+            viewModel.deleteAlimento(position, {
+                adapter.notifyItemRemoved(position)
+                Toast.makeText(this, "Alimento eliminado", Toast.LENGTH_SHORT).show()
+            }, { error ->
+                Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+            })
+        }
+        // Configuración del Dashboard
+        txtCalories = findViewById(R.id.txt_calories)
+        txtMacros = findViewById(R.id.txt_macros)
+
         actualizarDashboard()
+
+        // Fetch inicial de alimentos
+        viewModel.fetchAlimentos({
+            adapter.notifyDataSetChanged()
+        }, { error ->
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+        })
+
+        // Configuración del Bottom Navigation
+        setupBottomNavigation(R.id.bottom_navigation, R.id.nav_home)
     }
 
     private fun navegarSiNoEstaEn(destino: Class<*>) {
@@ -74,13 +93,9 @@ class MainActivity : BaseActivity() {
         val carbohidratos = 220
         val proteinas = 90
         val grasas = 60
-        val historialAlimentos = listOf("Manzana - 95 kcal", "Pollo - 250 kcal", "Arroz - 200 kcal")
 
         txtCalories.text = "Calorías consumidas hoy: $caloriasConsumidas kcal"
         txtMacros.text = "Carbohidratos: ${carbohidratos}g | Proteínas: ${proteinas}g | Grasas: ${grasas}g"
-
-        val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_list_item_1, historialAlimentos)
-        listFoodHistory.adapter = adapter
     }
 
     override fun onResume() {

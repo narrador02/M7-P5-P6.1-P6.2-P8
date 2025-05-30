@@ -40,11 +40,12 @@ class AlimentoViewModel : ViewModel() {
         }
     }
 
-    fun deleteAlimento(id: Int, position: Int, onSuccess: () -> Unit, onError: (String) -> Unit) {
+    fun deleteAlimento(position: Int, onSuccess: () -> Unit, onError: (String) -> Unit) {
         viewModelScope.launch {
             try {
+                val alimento = alimentos[position]
                 withContext(Dispatchers.IO) {
-                    RetrofitClient.apiService.deleteAlimento(id)
+                    RetrofitClient.apiService.deleteAlimentoByName(alimento.nombre)
                 }
                 alimentos.removeAt(position)
                 onSuccess()
