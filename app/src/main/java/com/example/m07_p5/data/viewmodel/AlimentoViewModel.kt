@@ -54,4 +54,21 @@ class AlimentoViewModel : ViewModel() {
             }
         }
     }
+
+    fun updateAlimento(id: Int, alimento: Alimento, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        viewModelScope.launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    RetrofitClient.apiService.updateAlimento(id, alimento)
+                }
+                val index = alimentos.indexOfFirst { it.nombre == alimento.nombre }
+                if (index != -1) {
+                    alimentos[index] = alimento
+                }
+                onSuccess()
+            } catch (e: Exception) {
+                onError(e.message ?: "Error desconocido")
+            }
+        }
+    }
 }

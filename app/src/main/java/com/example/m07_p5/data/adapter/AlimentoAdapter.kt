@@ -12,8 +12,8 @@ import com.example.m07_p5.data.model.Alimento
 
 class AlimentoAdapter(
     private val alimentos: MutableList<Alimento>,
-    private val onDeleteClick: (Int) -> Unit
-) : RecyclerView.Adapter<AlimentoAdapter.AlimentoViewHolder>() {
+    private val onEditClick: (Int) -> Unit,
+    private val onDeleteClick: (Int) -> Unit) : RecyclerView.Adapter<AlimentoAdapter.AlimentoViewHolder>() {
 
     class AlimentoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nombre: TextView = view.findViewById(R.id.food_name)
@@ -35,6 +35,10 @@ class AlimentoAdapter(
             .load(alimento.imagenUrl)
             .placeholder(android.R.drawable.ic_menu_gallery)
             .into(holder.imagen)
+
+        holder.itemView.setOnClickListener {
+            onEditClick(position)
+        }
 
         holder.itemView.setOnLongClickListener {
             onDeleteClick(position)

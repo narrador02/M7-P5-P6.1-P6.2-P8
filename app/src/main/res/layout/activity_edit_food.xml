@@ -80,6 +80,25 @@
         android:inputType="date"
         android:layout_marginBottom="16dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="URL de la imagen"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/md_theme_onBackground"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:id="@+id/edit_food_image_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ej: https://example.com/image.jpg"
+        android:backgroundTint="@color/md_theme_primary"
+        android:textColor="@color/md_theme_onSurface"
+        android:inputType="textUri"
+        android:layout_marginBottom="12dp"/>
+
     <Button
         android:id="@+id/btn_save_food"
         android:layout_width="match_parent"
