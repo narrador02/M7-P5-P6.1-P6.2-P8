@@ -38,5 +38,6 @@
         <activity android:name=".ListActivity" android:exported="true"/>
         <activity android:name=".AddConsumptionActivity" android:exported="false" />
         <activity android:name=".EditConsumptionActivity" android:exported="false" />
+        <activity android:name=".StatisticsActivity" android:exported="false" />
     </application>
 </manifest>

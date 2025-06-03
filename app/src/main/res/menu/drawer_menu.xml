@@ -41,4 +41,9 @@
         android:icon="@drawable/ic_logout"
         android:title="Cerrar Sesión" />
 
+    <item
+        android:id="@+id/nav_statistics"
+        android:icon="@drawable/ic_statistics"
+        android:title="Estadísticas" />
+
 </menu>

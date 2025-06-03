@@ -53,6 +53,10 @@ class MainActivity : BaseActivity() {
                 R.id.nav_add_food -> navegarSiNoEstaEn(AddFoodActivity::class.java)
                 R.id.nav_settings -> navegarSiNoEstaEn(PreferencesActivity::class.java)
                 R.id.nav_logout -> finishAffinity()
+                R.id.nav_statistics -> {
+                    val intent = Intent(this, StatisticsActivity::class.java)
+                    startActivity(intent)
+                }
             }
             drawerLayout.closeDrawers()
             true
